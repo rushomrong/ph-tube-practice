@@ -29,19 +29,29 @@ const displayVideos = (videos) => {
     const card = document.createElement("div");
     card.classList = "card card-compact rounded";
     card.innerHTML = `
-      <figure class="h-[250px] w-[200px]">
+      <figure class="h-[250px] w-[200px] relative">
         <img style="width:auto; height:208px;" src=${video.thumbnail} />
+
+        <span class="absolute">${video.others.posted_date}</span>
        </figure>
       <div class="px-0 py-2 flex gap-2">
 
         <div>
-          <img style="width:50px; height:50px; border-radius:50%" src=${video.authors[0].profile_picture}/>
+          <img style="width:50px; height:50px; border-radius:50%" src=${
+            video.authors[0].profile_picture
+          }/>
         </div>
         <div>
          <h2 style="font-weight:900; font-size: 16px">${video.title}</h2>
           <div class="flex items-center gap-2">
            <p class="text-lg font-bold">${video.authors[0].profile_name}</p>
-           <img style="width:25px; height:25px; border-radius:50%" src="/assets/verify.png"/>
+        
+           
+           ${
+             video.authors[0].verified
+               ? `<img style="width:20px; height:20px; border-radius:50%" src="/assets/verify.png" />`
+               : ""
+           }
           </div>
         
   
